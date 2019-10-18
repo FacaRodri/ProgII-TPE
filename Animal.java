@@ -37,5 +37,7 @@ public class Animal extends Pyme {
 	public double getPesoPromedio() {
 		return this.peso;
 	}
+	
+
 
 }
