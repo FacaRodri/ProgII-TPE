@@ -4,5 +4,6 @@ public abstract class Pyme {
 	public abstract double getEdad();
 	public abstract double getPeso();
 	public abstract double getPesoPromedio();
+	public abstract boolean sePuedeVender(Condicion c);
 	
 }

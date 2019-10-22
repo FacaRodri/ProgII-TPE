@@ -11,9 +11,10 @@ public class Animal extends Pyme {
 	private int ternerosParidos;
 	
 	//Constructor
-	public Animal(int id, String raza, String sexo) {
-		this.peso = 10;
+	public Animal(int id, int edad, double peso, String raza, String sexo) {
 		this.id = id;
+		this.edad = edad;
+		this.peso = peso;
 		this.raza = raza;
 		this.sexo = sexo;
 		  
@@ -36,6 +37,10 @@ public class Animal extends Pyme {
 	
 	public double getPesoPromedio() {
 		return this.peso;
+	}
+	
+	public boolean sePuedeVender(Condicion c) {
+		return c.cumple(this);
 	}
 	
 

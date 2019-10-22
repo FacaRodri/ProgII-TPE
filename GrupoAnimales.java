@@ -51,5 +51,14 @@ public class GrupoAnimales extends Pyme {
 		return sumaPromedios / this.getCantAnimales();
 	}
 	
+	public boolean sePuedeVender(Condicion c) {
+		for (int i = 0; i < animales.size(); i++) {
+			if (!animales.get(i).sePuedeVender(c)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 
 }
