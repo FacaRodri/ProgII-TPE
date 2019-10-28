@@ -1,3 +1,5 @@
+package Condiciones;
+import Default.Pyme;
 
 public class CondicionOr extends Condicion {
 	

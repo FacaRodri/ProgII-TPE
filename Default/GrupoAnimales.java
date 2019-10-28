@@ -1,5 +1,6 @@
+package Default;
 import java.util.ArrayList;
-
+import Condiciones.Condicion;
 public class GrupoAnimales extends Pyme {
 	
 	private ArrayList<Pyme> animales;
@@ -9,6 +10,11 @@ public class GrupoAnimales extends Pyme {
 	}
 	
 	
+	public ArrayList<Pyme> getAnimales() {
+		return animales;
+	}
+
+
 	public void agregar(Pyme p) {
 		animales.add(p);
 	}
@@ -20,15 +26,23 @@ public class GrupoAnimales extends Pyme {
 		}
 		return suma;
 	}
+	
+	public String getRaza() {
+		String razas = "";
+		for(int i = 0; i < animales.size(); i++) {
+			razas = razas + " " + animales.get(i).getRaza();
+		}
+		
+		return razas;
+	}
 
 	
-	//suma todas las edades y las divide por el total retornando el promedio
 	public double getEdad() {
 		double sumaEdad = 0;
 		for (int i = 0; i < this.animales.size(); i++) {
 			sumaEdad += animales.get(i).getEdad();
 		}
-		
+
 		return sumaEdad/this.getCantAnimales();
 	}
 
@@ -43,13 +57,9 @@ public class GrupoAnimales extends Pyme {
 
 
 	public double getPesoPromedio() {
-		double sumaPromedios = 0;
-		for(int i = 0; i < animales.size(); i++ ) {
-			sumaPromedios += animales.get(i).getPesoPromedio();
-		}
-		
-		return sumaPromedios / this.getCantAnimales();
+		return this.getPeso()/ this.getCantAnimales();
 	}
+	
 	
 	public boolean sePuedeVender(Condicion c) {
 		for (int i = 0; i < animales.size(); i++) {
@@ -58,6 +68,21 @@ public class GrupoAnimales extends Pyme {
 			}
 		}
 		return true;
+	}
+	
+
+	public ArrayList<Pyme> cargarAnimal(Camion c) {
+		ArrayList<Pyme> aux = new ArrayList<>();
+		int contador = 0;
+		for (int i = 0; i <	animales.size(); i++) {
+				if((animales.get(i).cargarAnimal(c) != null ) && (contador < c.getCapacidad())) {
+					aux.addAll(animales.get(i).cargarAnimal(c));
+					contador++;
+					animales.remove(animales.get(i));
+				}
+		}
+		c.addCargamento(aux);
+		return c.getCargamento();
 	}
 	
 

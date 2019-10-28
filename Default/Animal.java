@@ -1,3 +1,7 @@
+package Default;
+import java.util.ArrayList;
+
+import Condiciones.Condicion;
 
 public class Animal extends Pyme {
 	
@@ -24,6 +28,10 @@ public class Animal extends Pyme {
 	public int getCantAnimales() {
 		return 1;
 	}
+	
+	public String getRaza() {
+		return this.raza;
+	}
 
 
 	public double getEdad() {
@@ -41,6 +49,16 @@ public class Animal extends Pyme {
 	
 	public boolean sePuedeVender(Condicion c) {
 		return c.cumple(this);
+	}
+	
+	public ArrayList<Pyme> cargarAnimal(Camion c) {
+		ArrayList<Pyme> aux = new ArrayList<>();
+		if (c.getCondicion().cumple(this)) {
+			aux.add(this);
+			return aux;
+		}else {
+			return null;
+		}
 	}
 	
 
