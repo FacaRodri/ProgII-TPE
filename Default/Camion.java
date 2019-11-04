@@ -25,6 +25,7 @@ public class Camion {
 		return this.capacidad;
 	}
 	
+	//BORRAR
 	public void addCargamento(ArrayList<Pyme> animales) {
 		cargamento.addAll(animales);
 		this.capacidad--;
@@ -34,6 +35,7 @@ public class Camion {
 		return this.cargamento;
 	}
 	
+	//BORRAR
 	public String getRazasDelCargamento() {
 		String razas = " ";
 		for(int i = 0; i < cargamento.size(); i++) {
@@ -44,7 +46,20 @@ public class Camion {
 	}
 	
 	
-	
+	public ArrayList<Pyme> completar(GrupoAnimales a){//SISTEMA
+		ArrayList<Pyme> aux = a.buscar(c);
+		if (aux.size() >= capacidad) {
+			for (int i = 0 ; i < aux.size() && i < capacidad;i++) {
+				this.cargamento.add(aux.get(i));
+				a.remove(aux.get(i));
+			}
+			return cargamento;
+			
+		}else {
+			return null;
+		}
+		
+	}
 	
 	
 	

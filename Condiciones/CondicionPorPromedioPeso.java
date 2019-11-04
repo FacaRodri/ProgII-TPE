@@ -10,7 +10,7 @@ public class CondicionPorPromedioPeso extends Condicion {
 	}
 	
 	public boolean cumple(Pyme p) {
-		return p.getPesoPromedio() > topePeso;
+		return p.getPesoPromedio() >= topePeso;
 	}
 
 }

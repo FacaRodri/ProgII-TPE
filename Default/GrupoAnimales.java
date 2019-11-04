@@ -14,6 +14,7 @@ public class GrupoAnimales extends Pyme {
 		return animales;
 	}
 
+	
 
 	public void agregar(Pyme p) {
 		animales.add(p);
@@ -27,6 +28,15 @@ public class GrupoAnimales extends Pyme {
 		return suma;
 	}
 	
+	public double getEdad() {
+		double sumaEdad = 0;
+		for (int i = 0; i < this.animales.size(); i++) {
+			sumaEdad += animales.get(i).getEdad();
+		}
+		
+		return sumaEdad/this.getCantAnimales();
+	}
+	
 	public String getRaza() {
 		String razas = "";
 		for(int i = 0; i < animales.size(); i++) {
@@ -37,14 +47,6 @@ public class GrupoAnimales extends Pyme {
 	}
 
 	
-	public double getEdad() {
-		double sumaEdad = 0;
-		for (int i = 0; i < this.animales.size(); i++) {
-			sumaEdad += animales.get(i).getEdad();
-		}
-
-		return sumaEdad/this.getCantAnimales();
-	}
 
 	
 	public double getPeso() {
@@ -56,33 +58,28 @@ public class GrupoAnimales extends Pyme {
 	}
 
 
-	public double getPesoPromedio() {
-		return this.getPeso()/ this.getCantAnimales();
-	}
+//	public double getPesoPromedio() {
+//		return this.getPeso()/ this.getCantAnimales();
+//	}
 	
 	
 	public boolean sePuedeVender(Condicion c) {
-		for (int i = 0; i < animales.size(); i++) {
-			if (!animales.get(i).sePuedeVender(c)) {
-				return false;
-			}
-		}
-		return true;
+		return c.cumple(this);
 	}
 	
 
-	public ArrayList<Pyme> cargarAnimal(Camion c) {
+	public ArrayList<Pyme> buscar(Condicion c) {
 		ArrayList<Pyme> aux = new ArrayList<>();
-		int contador = 0;
-		for (int i = 0; i <	animales.size(); i++) {
-				if((animales.get(i).cargarAnimal(c) != null ) && (contador < c.getCapacidad())) {
-					aux.addAll(animales.get(i).cargarAnimal(c));
-					contador++;
-					animales.remove(animales.get(i));
-				}
+		for (int i = 0; (i < animales.size()); i++) {
+			aux.addAll(animales.get(i).buscar(c));
+			
 		}
-		c.addCargamento(aux);
-		return c.getCargamento();
+		
+		return aux;
+	}
+	
+	public void remove(Pyme p) {
+		animales.remove(p);
 	}
 	
 

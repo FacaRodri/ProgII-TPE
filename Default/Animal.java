@@ -6,7 +6,7 @@ import Condiciones.Condicion;
 public class Animal extends Pyme {
 	
 	//Attributes
-	private int id;
+	private  static int id=0;
 	private int edad;
 	private double peso;
 	private String raza;
@@ -16,7 +16,7 @@ public class Animal extends Pyme {
 	
 	//Constructor
 	public Animal(int id, int edad, double peso, String raza, String sexo) {
-		this.id = id;
+		this.id = this.id++;
 		this.edad = edad;
 		this.peso = peso;
 		this.raza = raza;
@@ -43,22 +43,20 @@ public class Animal extends Pyme {
 		return this.peso;
 	}
 	
-	public double getPesoPromedio() {
-		return this.peso;
-	}
+//	public double getPesoPromedio() {
+//		return this.peso;
+//	}
 	
-	public boolean sePuedeVender(Condicion c) {
-		return c.cumple(this);
-	}
-	
-	public ArrayList<Pyme> cargarAnimal(Camion c) {
+//	public boolean sePuedeVender(Condicion c) {
+//		return c.cumple(this);
+//	}
+//	
+	public ArrayList<Pyme> buscar(Condicion c) {
 		ArrayList<Pyme> aux = new ArrayList<>();
-		if (c.getCondicion().cumple(this)) {
+		if (c.cumple(this)) {
 			aux.add(this);
-			return aux;
-		}else {
-			return null;
 		}
+		return aux;
 	}
 	
 
