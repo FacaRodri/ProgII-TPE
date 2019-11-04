@@ -1,6 +1,6 @@
 package Condiciones;
 import Default.Pyme;
-public class CondicionPorEdad {
+public class CondicionPorEdad extends Condicion{
 	private double meses;
 	
 	public CondicionPorEdad(double m) {

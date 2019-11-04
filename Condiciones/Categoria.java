@@ -6,17 +6,18 @@ public class Categoria {
 	Condicion criterio;
 	String nombreCategoria;
 	
-	public Categoria(Condicion c, String n) {
-		this.criterio = c;
+	public Categoria(String n, Condicion c) {
 		this.nombreCategoria = n;
+		this.criterio = c;
 	}
 	
 	public boolean pertenece(Animal a) {
 		return criterio.cumple(a);
 	}
 	
-	public String getNombreCategoria() {
-		return this.nombreCategoria;
+	@Override
+	public String toString() {
+	     return "Pertenece a la Categoria: " + nombreCategoria;
 	}
 
 }

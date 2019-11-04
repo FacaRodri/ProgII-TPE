@@ -7,6 +7,7 @@ public class CondicionNot {
 	public CondicionNot(Condicion c) {
 		this.c=c;
 	}
+	
 	public boolean cumple(Pyme p) {
 		return (!(this.c.cumple(p)));
 	}

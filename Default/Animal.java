@@ -6,7 +6,7 @@ import Condiciones.Condicion;
 public class Animal extends Pyme {
 	
 	//Attributes
-	private  static int id=0;
+	private int id;
 	private int edad;
 	private double peso;
 	private String raza;
@@ -16,18 +16,59 @@ public class Animal extends Pyme {
 	
 	//Constructor
 	public Animal(int id, int edad, double peso, String raza, String sexo) {
-		this.id = this.id++;
+		this.id = id;
 		this.edad = edad;
 		this.peso = peso;
 		this.raza = raza;
 		this.sexo = sexo;
 		  
 	}
-
 	
+	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+
+
+	public String getSexo() {
+		return sexo;
+	}
+
+
+
+	public Boolean getCapado() {
+		return capado;
+	}
+
+
+
+	public void setCapado(Boolean capado) {
+		this.capado = capado;
+	}
+
+
+
+	public int getTernerosParidos() {
+		return ternerosParidos;
+	}
+
+
+
+
+	public void setTernerosParidos(int ternerosParidos) {
+		this.ternerosParidos = ternerosParidos;
+	}
+
+
+
+
 	public int getCantAnimales() {
 		return 1;
 	}
+
 	
 	public String getRaza() {
 		return this.raza;

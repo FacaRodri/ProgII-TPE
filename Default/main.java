@@ -1,14 +1,10 @@
 package Default;
 import java.util.ArrayList;
 
-import Condiciones.Condicion;
-import Condiciones.CondicionAnd;
-import Condiciones.CondicionOr;
-import Condiciones.CondicionPorPromedioEdad;
-import Condiciones.CondicionPorPromedioPeso;
-import Condiciones.CondicionPorRaza;
+import Condiciones.*;
 
 public class main {
+	
 
 	public static void main(String[] args) {
 		
@@ -25,7 +21,16 @@ public class main {
 		Condicion c3 = new CondicionOr(c1, c2);
 		Condicion c4 = new CondicionAnd(c1, c2);
 		Condicion c5 = new CondicionPorRaza("lechero");
+		Condicion c6 = new CondicionPorEdad(8);
+		Categoria cat1 = new Categoria("Lechal", c6);
+		Categoria cat2 = new Categoria("Vaca", c5);
+		
 		Camion camion = new Camion(2, c5);
+		Ministerio ministerio = new Ministerio();
+		
+		ministerio.addCategoria(cat1);
+		ministerio.addCategoria(cat2);
+		
 		
 		GrupoCompuesto.agregar(a1);
 		GrupoCompuesto.agregar(a2);
@@ -71,11 +76,16 @@ public class main {
 		System.out.println(Grupo2.sePuedeVender(c4));
 		
 		System.out.println("------------------------------------------------------------------------");
+		ministerio.getCategorias(a2);
 		
 		System.out.println(camion.getCargamento());
 		System.out.println(camion.getRazasDelCargamento());
 //		System.out.println(GrupoCompuesto.getAnimales());
 //		System.out.println(GrupoCompuesto.getRaza());
+		
+		
+		
+		
 		
 		
 		
