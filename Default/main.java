@@ -8,12 +8,12 @@ public class main {
 
 	public static void main(String[] args) {
 		
-		Animal a1 = new Animal(1, 10, 500, "aberdeen angus", "m");
+		Animal a1 = new Animal(1, 10, 500, "aberdeen-angus", "m");
 		Animal a2 = new Animal(2, 10, 200, "lechero", "f");
-		Animal a3 = new Animal(3, 10, 300, "qsy", "m");
-		Animal a4 = new Animal(1, 10, 500, "asdasd", "f");
+		Animal a3 = new Animal(3, 10, 300, "vaca", "m");
+		Animal a4 = new Animal(1, 10, 500, "toro", "f");
 		Animal a5 = new Animal(1, 10, 500, "lechero", "m");
-		Animal a6 = new Animal(1, 10, 500, "droga", "f");
+		Animal a6 = new Animal(1, 10, 500, "vaca", "f");
 		GrupoAnimales GrupoCompuesto = new GrupoAnimales();
 		GrupoAnimales Grupo2 = new GrupoAnimales();
 		Condicion c1 = new CondicionPorPromedioPeso(400);
@@ -22,6 +22,8 @@ public class main {
 		Condicion c4 = new CondicionAnd(c1, c2);
 		Condicion c5 = new CondicionPorRaza("lechero");
 		Condicion c6 = new CondicionPorEdad(8);
+		
+		
 		Categoria cat1 = new Categoria("Lechal", c6);
 		Categoria cat2 = new Categoria("Vaca", c5);
 		
@@ -40,6 +42,7 @@ public class main {
 		Grupo2.agregar(a5);
 		Grupo2.agregar(a6);
 		
+		
 		GrupoCompuesto.agregar(Grupo2);
 	
 		
@@ -57,13 +60,14 @@ public class main {
 		System.out.println("Edad o peso: "+GrupoCompuesto.sePuedeVender(c3));
 		System.out.println("Edad y pso: "+GrupoCompuesto.sePuedeVender(c4));
 		
-//		System.out.println("     ");
-//		System.out.println("----------CAMION---------");		
-//		System.out.println("Camion"+GrupoCompuesto.buscar(c5));
-//		camion.completar(GrupoCompuesto);
-//		System.out.println("     ");
-//		System.out.println("------------------------------------------------------------------------");
-//		
+		System.out.println("     ");
+		System.out.println("----------CAMION---------");		
+		System.out.println("Camion" + GrupoCompuesto.buscar(c5));
+		
+		camion.completar(GrupoCompuesto);
+		System.out.println("     ");
+		System.out.println("------------------------------------------------------------------------");
+		
 		
 		System.out.println(Grupo2.getAnimales());
 		System.out.println(Grupo2.getRaza());
@@ -79,10 +83,8 @@ public class main {
 		ministerio.getCategorias(a2);
 		
 		System.out.println(camion.getCargamento());
-		System.out.println(camion.getRazasDelCargamento());
-//		System.out.println(GrupoCompuesto.getAnimales());
-//		System.out.println(GrupoCompuesto.getRaza());
-		
+
+		System.out.println("Animales: "+GrupoCompuesto.getRaza());
 		
 		
 		

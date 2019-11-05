@@ -6,7 +6,7 @@ import Condiciones.Condicion;
 public class Camion {
 	
 	private int capacidad;
-	private ArrayList<Pyme> cargamento;
+	private ArrayList<Animal> cargamento;
 	private Condicion c;
 	
 	
@@ -25,40 +25,33 @@ public class Camion {
 		return this.capacidad;
 	}
 	
-	//BORRAR
-	public void addCargamento(ArrayList<Pyme> animales) {
-		cargamento.addAll(animales);
-		this.capacidad--;
-	}
-	
-	public ArrayList<Pyme> getCargamento(){
+	public ArrayList<Animal> getCargamento(){
 		return this.cargamento;
 	}
 	
-	//BORRAR
-	public String getRazasDelCargamento() {
-		String razas = " ";
-		for(int i = 0; i < cargamento.size(); i++) {
-			razas = razas + " " + cargamento.get(i).getRaza();
-		}
-		
-		return razas;
-	}
-	
-	
-	public ArrayList<Pyme> completar(GrupoAnimales a){//SISTEMA
-		ArrayList<Pyme> aux = a.buscar(c);
+	//Toma el arreglo devuelto por a.buscar(c) y lo guarda en un arreglo auxiliar
+	//llena el cargamento segun la capacidad
+	//limpia del grupo de animales los que ya estan cargados
+	public ArrayList<Animal> completar(GrupoAnimales a){//SISTEMA
+		ArrayList<Animal> aux = a.buscar(c);
 		if (aux.size() >= capacidad) {
 			for (int i = 0 ; i < aux.size() && i < capacidad;i++) {
 				this.cargamento.add(aux.get(i));
-				a.remove(aux.get(i));
 			}
+			this.limpiar(a);
 			return cargamento;
 			
 		}else {
 			return null;
 		}
 		
+	}
+	
+	//recorre el cargamento y elimina del grupo de animales cada posicion del cargamento
+	public void limpiar(GrupoAnimales a) {
+		for (int i = 0; i < this.cargamento.size(); i++) {
+			a.eliminar(this.cargamento.get(i));
+		}
 	}
 	
 	

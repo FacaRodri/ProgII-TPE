@@ -8,9 +8,9 @@ public abstract class Pyme {
 	public abstract String getRaza();
 	public abstract double getEdad();
 	public abstract double getPeso();
-//	public abstract boolean sePuedeVender(Condicion c);
-	public abstract ArrayList<Pyme> buscar(Condicion c);
+	public abstract ArrayList<Animal> buscar(Condicion c);
 	public double getPesoPromedio() {
 		return this.getPeso()/ this.getCantAnimales();
 	}
+	public abstract void eliminar(Animal a);
 }
